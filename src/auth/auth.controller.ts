@@ -7,7 +7,7 @@ import {
   Post,
   Request,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Public } from './auth.decorator';
 import { AuthService } from './auth.service';
 import { SignInDto } from './dto/signin.dto';
@@ -19,6 +19,10 @@ export class AuthController {
   @ApiTags('authentication')
   @Public()
   @HttpCode(HttpStatus.OK)
+  @ApiResponse({
+    status: 200,
+    description: 'Returns access token',
+  })
   @Post('login')
   signIn(@Body() signInDto: SignInDto) {
     return this.authService.signIn(signInDto.username, signInDto.password);
