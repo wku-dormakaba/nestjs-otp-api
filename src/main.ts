@@ -16,6 +16,10 @@ async function bootstrap() {
     .setDescription('provides OTP service')
     .setVersion('1.0')
     .addTag('otp')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'access-token',
+    )
     .build();
 
   const options: SwaggerDocumentOptions = {

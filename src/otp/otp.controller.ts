@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CreateOtpDto } from './dto/create-otp.dto';
 import { OtpService } from './otp.service';
 
@@ -7,6 +7,7 @@ import { OtpService } from './otp.service';
 export class OtpController {
   constructor(private otpService: OtpService) {}
 
+  @ApiBearerAuth('access-token')
   @Get()
   @ApiTags('otp')
   // generate(
