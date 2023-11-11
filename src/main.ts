@@ -20,6 +20,8 @@ async function bootstrap() {
       { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
       'access-token',
     )
+    .addServer('http://localhost:3000')
+    .addServer('http://192.168.247.128:3000')
     .build();
 
   const options: SwaggerDocumentOptions = {
